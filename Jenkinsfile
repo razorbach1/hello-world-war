@@ -20,5 +20,14 @@ mvn clean package
       }
     }
 
+    stage('SonarQube') {
+      steps {
+        withSonarQubeEnv(credentialsId: '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', envOnly: true, installationName: 'SonaeQube-server') {
+          waitForQualityGate(abortPipeline: true, credentialsId: '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')
+        }
+
+      }
+    }
+
   }
 }
