@@ -22,10 +22,7 @@ mvn clean package
 
     stage('SonarQube') {
       steps {
-        withSonarQubeEnv(credentialsId: 'SonarQube', envOnly: true, installationName: 'SonarQube-server') {
-          waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQube')
-        }
-
+        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=razorbach1_hello-world-war'
       }
     }
 
