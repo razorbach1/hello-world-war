@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'docker-vm'
-    }
-
-  }
+  agent any
   stages {
     stage('checkout code') {
       steps {
