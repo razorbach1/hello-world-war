@@ -9,8 +9,9 @@ pipeline {
 
     stage('mvn compile') {
       steps {
-        sh '''mvn compile
-mvn clean package
+        sh '''echo "$USER"
+echo mvn compile
+echo mvn clean package
 '''
       }
     }
