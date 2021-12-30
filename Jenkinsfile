@@ -23,7 +23,8 @@ mvn clean package
 
     stage('Docker Build') {
       steps {
-        sh 'docker build -t helloworld:$BUILD_ID .'
+        sh '''echo "$USER"
+echo docker build -t helloworld:$BUILD_ID .'''
       }
     }
 
