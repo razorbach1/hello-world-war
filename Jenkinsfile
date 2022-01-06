@@ -39,17 +39,20 @@ docker build -t helloworld:$BUILD_ID .'''
           sh '''docker tag helloworld:$BUILD_ID 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID
         docker push 127.0.0.1:8123/repository/local-docker/helloworld:$BUILD_ID '''
         }
-  post {
-    success {
-      slackSend(message: "Build deployed successfully - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'project-j8c7732', color: '#008000')
-    }
 
-    failure {
-      slackSend(message: " Build failed - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'project-j8c7732', color: '#FF0000')
-       }
+        post() {
+          success() {
+            slackSend(message: "Build deployed successfully - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'project-j8c7732', color: '#008000')
+          }
+
+          failure() {
+            slackSend(message: " Build failed - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'project-j8c7732', color: '#FF0000')
+          }
+
+        }
+
       }
     }
 
   }
-}
 }
