@@ -52,3 +52,4 @@ docker build -t helloworld:$BUILD_ID .'''
 
   }
 }
+}
