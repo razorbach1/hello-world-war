@@ -48,12 +48,12 @@ docker build -t helloworld:$BUILD_ID .'''
 
   }
   post {
-    success {
-      slackSend(message: "Build deployed successfully - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'project-j8c7732', color: '#00FF00', token: 'l0zV5qHhHeF6VzJMj7KVHv0f')
-    }
-	  
-    failure {
-      slackSend(message: " Build failed - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'project-j8c7732', color: '#FF0000', token: 'l0zV5qHhHeF6VzJMj7KVHv0f')
-    }
-}
+     success {
+        slackSend(message: "Build deployed successfully - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'int-project', color: '#008000')
+     }
+
+     failure {
+          slackSend(message: " Build failed - ${env.JOB_NAME} #${env.BUILD_NUMBER} - (${env.BUILD_URL}) ", channel: 'int-project', color: '#FF0000')
+     }
+ }
 }
